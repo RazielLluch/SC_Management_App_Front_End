@@ -23,13 +23,15 @@ import {
 import { EllipsisVerticalIcon, CircleUserRoundIcon, CreditCardIcon, BellIcon, LogOutIcon } from "lucide-react"
 
 export function NavUser({
-  user,
+    user,
+    logout
 }: {
-  user: {
+    user: {
     name: string
     email: string
     avatar: string
-  }
+    },
+    logout: () => void
 }) {
   const { isMobile } = useSidebar()
   return (
@@ -94,7 +96,7 @@ export function NavUser({
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem onClick={logout}>
               <LogOutIcon
               />
               Log out
