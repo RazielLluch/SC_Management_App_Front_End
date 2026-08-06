@@ -4,7 +4,7 @@ import React from 'react';
 import {Button} from "@/components/ui/button";
 import {signInWithGoogle} from "@/lib/auth-actions";
 
-const SigninWithGoogleButton = () => {
+const SignupWithGoogleButton = () => {
     return (
         <Button
             type="button"
@@ -14,9 +14,9 @@ const SigninWithGoogleButton = () => {
                 signInWithGoogle();
             }}
         >
-            Sign in with Google
+            Sign up with Google
         </Button>
     )
 }
 
-export default SigninWithGoogleButton;
+export default SignupWithGoogleButton;
