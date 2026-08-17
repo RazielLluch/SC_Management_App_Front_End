@@ -15,7 +15,6 @@ import {
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import {signin} from "@/lib/auth-actions";
-import SigninWithGoogleButton from "@/app/(auth)/signin/components/signin-with-google";
 
 export function SigninForm({
                               className,
@@ -57,7 +56,6 @@ export function SigninForm({
                             </Field>
                             <Field>
                                 <Button type="submit" formAction={signin}>Login</Button>
-                                <SigninWithGoogleButton/>
                                 <FieldDescription className="text-center">
                                     Don&apos;t have an account? <a href="signup">Sign up</a>
                                 </FieldDescription>

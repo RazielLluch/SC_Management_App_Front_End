@@ -4,6 +4,8 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 import { createClient } from "@/utils/supabase/server";
+import {apiFetch} from "@/utils/api/fetch";
+
 
 export async function signin(formData: FormData) {
     const supabase = await createClient();
@@ -25,53 +27,105 @@ export async function signin(formData: FormData) {
     redirect("/");
 }
 
-export async function signup(formData: FormData) {
-    console.log("========== SIGNUP START ==========");
 
-    const supabase = await createClient();
+export async function signup_student(formData: FormData) {
 
-    const firstName = formData.get("first-name") as string;
-    const lastName = formData.get("last-name") as string;
-    const email = formData.get("email") as string;
-    const password = formData.get("password") as string;
+  const supabase = await createClient();
 
-    console.log("Signup request:");
-    console.log({
-        firstName,
-        lastName,
-        email,
-        passwordLength: password.length, // Never log the actual password
-    });
+  const response = await apiFetch(
+    supabase,
+    "/auth/signup",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: formData.get("email"),
+        password: formData.get("password"),
+        first_name: formData.get("first_name"),
+        last_name: formData.get("last_name"),
+        student_number: formData.get("student_number"),
+        year_level: formData.get("year_level"),
+        program: formData.get("program"),
+      })
+    }
+  )
 
-    const { data, error } = await supabase.auth.signUp({
-        email,
-        password,
-        options: {
-            data: {
-                full_name: `${firstName} ${lastName}`,
-                email,
-            },
-        },
-    });
-
-    console.log("Supabase response:");
-    console.log({
-        user: data.user,
-        session: data.session,
-        error,
-    });
-
-    if (error) {
-        console.error("Signup failed:", error);
+    if (!response.ok) {
+        // handle error
+        console.log(response);
         redirect("/error");
     }
 
-    console.log("Signup successful.");
-    console.log("========== SIGNUP END ==========");
-
-    revalidatePath("/", "layout");
     redirect("/");
 }
+
+
+export async function signup_faculty(formData: FormData) {
+
+  const supabase = await createClient();
+
+  const response = await apiFetch(
+    supabase,
+    "/auth/signup",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: formData.get("email"),
+        password: formData.get("password"),
+        first_name: formData.get("first_name"),
+        last_name: formData.get("last_name"),
+        employee_number: formData.get("student_number"),
+        department: formData.get("department"),
+      })
+    }
+  )
+
+  if (!response.ok) {
+    // handle error
+    console.log(response);
+    redirect("/error");
+  }
+
+  redirect("/");
+}
+
+
+export async function signup_org(formData: FormData) {
+
+  const supabase = await createClient();
+
+  const response = await apiFetch(
+    supabase,
+    "/auth/signup",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: formData.get("email"),
+        password: formData.get("password"),
+        name: formData.get("name"),
+        short_name: formData.get("short_name"),
+        organization_type: formData.get("organization_type"),
+      })
+    }
+  )
+
+  if (!response.ok) {
+    // handle error
+    console.log(response);
+    redirect("/error");
+  }
+
+  redirect("/");
+}
+
 
 export async function signout() {
     const supabase = await createClient();
@@ -84,23 +138,3 @@ export async function signout() {
     redirect("/signout");
 }
 
-export async function signInWithGoogle() {
-    const supabase = await createClient();
-    const { data, error } = await supabase.auth.signInWithOAuth({
-        provider: "google",
-        options: {
-            redirectTo: `http://localhost:3000/auth/callback`,
-            queryParams: {
-                access_type: "offline",
-                prompt: "consent",
-            },
-        },
-    });
-
-    if (error) {
-        console.log(error);
-        redirect("/error");
-    }
-
-    redirect(data.url);
-}

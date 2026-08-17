@@ -15,7 +15,10 @@ import {
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import {signup} from "@/lib/auth-actions";
-import SignupWithGoogleButton from "@/app/(auth)/signup/components/signup-with-google";
+
+
+// TODO: Implement student, faculty, and org signup
+
 
 export function SignupForm({
                                className,
@@ -82,7 +85,6 @@ export function SignupForm({
                             </Field>
                             <Field>
                                 <Button type="submit" formAction={signup}>Create Account</Button>
-                                <SignupWithGoogleButton />
                                 <FieldDescription className="text-center">
                                     Already have an account? <a href="signin">Sign in</a>
                                 </FieldDescription>
