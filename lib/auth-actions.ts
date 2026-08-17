@@ -4,7 +4,8 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 import { createClient } from "@/utils/supabase/server";
-import {apiFetch} from "@/utils/api/fetch";
+import {signupFacultySchema, signupOrgSchema, signupStudentSchema} from "@/lib/validations/auth";
+import {AccountType} from "@/lib/enums";
 
 
 export async function signin(formData: FormData) {
@@ -32,33 +33,40 @@ export async function signup_student(formData: FormData) {
 
   const supabase = await createClient();
 
-  const response = await apiFetch(
-    supabase,
-    "/auth/signup",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: formData.get("email"),
-        password: formData.get("password"),
-        first_name: formData.get("first_name"),
-        last_name: formData.get("last_name"),
-        student_number: formData.get("student_number"),
-        year_level: formData.get("year_level"),
-        program: formData.get("program"),
-      })
-    }
-  )
-
-    if (!response.ok) {
-        // handle error
-        console.log(response);
-        redirect("/error");
+  const rawData = {
+      email: formData.get("email"),
+      password: formData.get("password"),
+      options: {
+        data: {
+          account_type: AccountType.Student,
+          first_name: formData.get("first_name"),
+          last_name: formData.get("last_name"),
+          student_number: formData.get("student_number"),
+          year_level: formData.get("year_level"),
+          program: formData.get("program"),
+        }
+      }
     }
 
-    redirect("/");
+  console.log(rawData);
+
+  const result = signupStudentSchema.safeParse(rawData);
+
+  console.log(result);
+
+  if (!result.success) {
+    console.log(result.error);
+  }
+
+  const { error } = await supabase.auth.signUp(result.data);
+
+  if (error) {
+    console.log(error);
+    redirect("/error");
+  }
+
+  revalidatePath("/", "layout");
+  redirect("/");
 }
 
 
@@ -66,31 +74,38 @@ export async function signup_faculty(formData: FormData) {
 
   const supabase = await createClient();
 
-  const response = await apiFetch(
-    supabase,
-    "/auth/signup",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: formData.get("email"),
-        password: formData.get("password"),
+  const rawData = {
+    email: formData.get("email"),
+    password: formData.get("password"),
+    options: {
+      data: {
+        account_type: AccountType.Faculty,
         first_name: formData.get("first_name"),
         last_name: formData.get("last_name"),
-        employee_number: formData.get("student_number"),
+        employee_number: formData.get("employee_number"),
         department: formData.get("department"),
-      })
+      }
     }
-  )
+  };
 
-  if (!response.ok) {
-    // handle error
-    console.log(response);
+  console.log(rawData);
+
+  const result = signupFacultySchema.safeParse(rawData);
+
+  console.log(result);
+
+  if (!result.success) {
+    console.log(result.error);
+  }
+
+  const { error } = await supabase.auth.signUp(result.data);
+
+  if (error) {
+    console.log(error);
     redirect("/error");
   }
 
+  revalidatePath("/", "layout");
   redirect("/");
 }
 
@@ -99,30 +114,38 @@ export async function signup_org(formData: FormData) {
 
   const supabase = await createClient();
 
-  const response = await apiFetch(
-    supabase,
-    "/auth/signup",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: formData.get("email"),
-        password: formData.get("password"),
-        name: formData.get("name"),
-        short_name: formData.get("short_name"),
-        organization_type: formData.get("organization_type"),
-      })
+  const rawData = {
+      email: formData.get("email"),
+      password: formData.get("password"),
+      options: {
+        data: {
+          account_type: AccountType.Organization,
+          name: formData.get("name"),
+          short_name: formData.get("short_name"),
+          organization_type: formData.get("organization_type"),
+        }
+      }
     }
-  )
 
-  if (!response.ok) {
-    // handle error
-    console.log(response);
+    console.log(rawData);
+
+  const result = signupOrgSchema.safeParse(rawData);
+
+  console.log(result);
+
+  if (!result.success) {
+    console.log(result.error);
     redirect("/error");
   }
 
+  const { error } = await supabase.auth.signUp(result.data);
+
+  if (error) {
+    console.log(error);
+    redirect("/error");
+  }
+
+  revalidatePath("/", "layout");
   redirect("/");
 }
 
