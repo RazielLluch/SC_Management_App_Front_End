@@ -116,45 +116,53 @@ export function SignupStudentForm({
                             </Field>
 
                             <Field>
-                                <FieldLabel htmlFor="student_number">Student ID Number</FieldLabel>
-                                <Input
-                                  id="student_Number"
-                                  name="student_number"
-                                  type="student_number"
-                                  placeholder="yyyy-xxxx"
-                                  required
-                                  autoComplete="student_number"
-                                />
-                            </Field>
+                                <Field className="grid grid-cols-2 gap-4">
 
-                            <Field>
-                                <FieldLabel htmlFor="program">
-                                    Program
-                                </FieldLabel>
+                                    {/* Student ID Number*/}
+                                    <Field>
+                                        <FieldLabel htmlFor="student_number">Student ID Number</FieldLabel>
+                                        <Input
+                                          id="student_number"
+                                          name="student_number"
+                                          type="student_number"
+                                          placeholder="yyyy-xxxx"
+                                          required
+                                          autoComplete="student_number"
+                                        />
+                                    </Field>
 
-                                <Select name="program" required>
-                                    <SelectTrigger
-                                      id="program"
-                                      className="w-full"
-                                    >
-                                        <SelectValue placeholder="Select program" />
-                                    </SelectTrigger>
+                                    {/* Program */}
+                                    <Field>
+                                        <FieldLabel htmlFor="program">
+                                            Program
+                                        </FieldLabel>
 
-                                    <SelectContent>
-                                        <SelectItem value="BSCS">
-                                            BSCS
-                                        </SelectItem>
-                                        <SelectItem value="BSIT">
-                                            BSIT
-                                        </SelectItem>
-                                        <SelectItem value="BSIS">
-                                            BSIS
-                                        </SelectItem>
-                                        <SelectItem value="BSCA">
-                                            BSCA
-                                        </SelectItem>
-                                    </SelectContent>
-                                </Select>
+                                        <Select name="program" required>
+                                            <SelectTrigger
+                                              id="program"
+                                              className="w-full"
+                                            >
+                                                <SelectValue placeholder="Select program" />
+                                            </SelectTrigger>
+
+                                            <SelectContent>
+                                                <SelectItem value="BSCS">
+                                                    BSCS
+                                                </SelectItem>
+                                                <SelectItem value="BSIT">
+                                                    BSIT
+                                                </SelectItem>
+                                                <SelectItem value="BSIS">
+                                                    BSIS
+                                                </SelectItem>
+                                                <SelectItem value="BSCA">
+                                                    BSCA
+                                                </SelectItem>
+                                            </SelectContent>
+                                        </Select>
+                                    </Field>
+
+                                </Field>
                             </Field>
                             
                             <Field>

@@ -78,42 +78,50 @@ export function SignupFacultyForm({
                             </Field>
 
                             <Field>
-                                <FieldLabel htmlFor="employee_number">Employee ID Number</FieldLabel>
-                                <Input
-                                  id="employee_number"
-                                  name="employee_number"
-                                  type="employee_number"
-                                  placeholder="yyyy-xxx"
-                                  required
-                                  autoComplete="employee_number"
-                                />
-                            </Field>
+                                <Field className="grid grid-cols-2 gap-4">
 
-                            <Field>
-                                <FieldLabel htmlFor="department">
-                                    Department
-                                </FieldLabel>
+                                    {/* Employee ID Number */}
+                                    <Field>
+                                        <FieldLabel htmlFor="employee_number">Employee ID Number</FieldLabel>
+                                        <Input
+                                          id="employee_number"
+                                          name="employee_number"
+                                          type="employee_number"
+                                          placeholder="yyyy-xxx"
+                                          required
+                                          autoComplete="employee_number"
+                                        />
+                                    </Field>
 
-                                <Select name="department" required>
-                                    <SelectTrigger
-                                      id="department"
-                                      className="w-full"
-                                    >
-                                        <SelectValue placeholder="Select department" />
-                                    </SelectTrigger>
+                                    {/* Department*/}
+                                    <Field>
+                                        <FieldLabel htmlFor="department">
+                                            Department
+                                        </FieldLabel>
 
-                                    <SelectContent>
-                                        <SelectItem value="CS Dept">
-                                            CS Dept
-                                        </SelectItem>
-                                        <SelectItem value="IT Dept">
-                                            IT Dept
-                                        </SelectItem>
-                                        <SelectItem value="CA Dept">
-                                            CA Dept
-                                        </SelectItem>
-                                    </SelectContent>
-                                </Select>
+                                        <Select name="department" required>
+                                            <SelectTrigger
+                                              id="department"
+                                              className="w-full"
+                                            >
+                                                <SelectValue placeholder="Select department" />
+                                            </SelectTrigger>
+
+                                            <SelectContent>
+                                                <SelectItem value="CS Dept">
+                                                    CS Dept
+                                                </SelectItem>
+                                                <SelectItem value="IT Dept">
+                                                    IT Dept
+                                                </SelectItem>
+                                                <SelectItem value="CA Dept">
+                                                    CA Dept
+                                                </SelectItem>
+                                            </SelectContent>
+                                        </Select>
+                                    </Field>
+
+                                </Field>
                             </Field>
                             
                             <Field>
