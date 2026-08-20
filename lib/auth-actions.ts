@@ -56,6 +56,7 @@ export async function signup_student(formData: FormData) {
 
   if (!result.success) {
     console.log(result.error);
+    redirect("/error");
   }
 
   const { error } = await supabase.auth.signUp(result.data);
@@ -96,6 +97,7 @@ export async function signup_faculty(formData: FormData) {
 
   if (!result.success) {
     console.log(result.error);
+    redirect("/error");
   }
 
   const { error } = await supabase.auth.signUp(result.data);
@@ -160,4 +162,3 @@ export async function signout() {
 
     redirect("/signout");
 }
-
