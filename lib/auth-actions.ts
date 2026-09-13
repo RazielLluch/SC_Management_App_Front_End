@@ -21,7 +21,16 @@ export async function signin(formData: FormData) {
     const { error } = await supabase.auth.signInWithPassword(data);
 
     if (error) {
-        redirect("/error");
+
+      if (error.status === 400) {
+        return {
+          success: false,
+          status: 400,
+          message: error.message,
+        };
+      }
+
+        redirect(`/error?status=${error.status ?? 500}&message=${encodeURIComponent(error.message)}`);
     }
 
     revalidatePath("/", "layout");
@@ -52,18 +61,22 @@ export async function signup_student(formData: FormData) {
 
   const result = signupStudentSchema.safeParse(rawData);
 
-  console.log(result);
-
-  if (!result.success) {
+  if (!result.success){
     console.log(result.error);
-    redirect("/error");
+
+    redirect(
+      `/error?status=400&message=${encodeURIComponent("Invalid signup information.")}`
+    );
   }
 
   const { error } = await supabase.auth.signUp(result.data);
 
   if (error) {
     console.log(error);
-    redirect("/error");
+
+    redirect(
+      `/error?status=${error.status ?? 500}&message=${encodeURIComponent(error.message)}`
+    );
   }
 
   revalidatePath("/", "layout");
@@ -97,14 +110,19 @@ export async function signup_faculty(formData: FormData) {
 
   if (!result.success) {
     console.log(result.error);
-    redirect("/error");
+    redirect(
+      `/error?status=400&message=${encodeURIComponent("Invalid signup information.")}`
+    );
   }
 
   const { error } = await supabase.auth.signUp(result.data);
 
   if (error) {
     console.log(error);
-    redirect("/error");
+
+    redirect(
+      `/error?status=${error.status ?? 500}&message=${encodeURIComponent(error.message)}`
+    );
   }
 
   revalidatePath("/", "layout");
@@ -117,19 +135,18 @@ export async function signup_org(formData: FormData) {
   const supabase = await createClient();
 
   const rawData = {
-      email: formData.get("email"),
-      password: formData.get("password"),
-      options: {
-        data: {
-          account_type: AccountType.Organization,
-          name: formData.get("name"),
-          short_name: formData.get("short_name"),
-          organization_type: formData.get("organization_type"),
-        }
+    email: formData.get("email"),
+    password: formData.get("password"),
+    options: {
+      data: {
+        account_type: AccountType.Organization,
+        name: formData.get("name"),
+        short_name: formData.get("short_name"),
+        organization_type: formData.get("organization_type"),
       }
     }
-
-    console.log(rawData);
+  }
+  console.log(rawData);
 
   const result = signupOrgSchema.safeParse(rawData);
 
@@ -137,14 +154,19 @@ export async function signup_org(formData: FormData) {
 
   if (!result.success) {
     console.log(result.error);
-    redirect("/error");
+    redirect(
+      `/error?status=400&message=${encodeURIComponent("Invalid signup information.")}`
+    );
   }
 
   const { error } = await supabase.auth.signUp(result.data);
 
   if (error) {
     console.log(error);
-    redirect("/error");
+
+    redirect(
+      `/error?status=${error.status ?? 500}&message=${encodeURIComponent(error.message)}`
+    );
   }
 
   revalidatePath("/", "layout");
@@ -157,7 +179,7 @@ export async function signout() {
     const { error } = await supabase.auth.signOut();
     if (error) {
         console.log(error);
-        redirect("/error");
+        redirect("/error?status=500&message=" + encodeURIComponent(error.message));
     }
 
     redirect("/signout");
