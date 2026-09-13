@@ -1,7 +1,7 @@
 "use client"
 
 
-import {useState, useActionState, useEffect} from "react";
+import React, {useState, useActionState} from "react";
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import {
@@ -39,11 +39,10 @@ export function SigninForm({
     initialState
   );
 
-  useEffect(() => {
-    if (!state.success) {
-      setPassword("");
-    }
-  }, [state.errorId]);
+  const handleSubmit = async (formData: FormData) => {
+    setPassword("");
+    formAction(formData);
+  };
 
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
@@ -56,7 +55,7 @@ export function SigninForm({
         </CardHeader>
         <CardContent>
 
-          <form action={formAction}>
+          <form action={handleSubmit}>
 
             <FieldGroup>
 
