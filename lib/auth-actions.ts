@@ -7,8 +7,16 @@ import { createClient } from "@/utils/supabase/server";
 import {signupFacultySchema, signupOrgSchema, signupStudentSchema} from "@/lib/validations/auth";
 import {AccountType} from "@/lib/enums";
 
+export type SigninState = {
+  success: boolean;
+  message?: string;
+  errorId?: number;
+};
 
-export async function signin(formData: FormData) {
+export async function signin(
+  _prevState: SigninState,
+  formData: FormData
+): Promise<SigninState> {
     const supabase = await createClient();
 
     // type-casting here for convenience
@@ -25,8 +33,8 @@ export async function signin(formData: FormData) {
       if (error.status === 400) {
         return {
           success: false,
-          status: 400,
           message: error.message,
+          errorId: (_prevState.errorId ?? 0) + 1,
         };
       }
 
