@@ -7,8 +7,16 @@ import { createClient } from "@/utils/supabase/server";
 import {signupFacultySchema, signupOrgSchema, signupStudentSchema} from "@/lib/validations/auth";
 import {AccountType} from "@/lib/enums";
 
+export type SigninState = {
+  success: boolean;
+  message?: string;
+  errorId?: number;
+};
 
-export async function signin(formData: FormData) {
+export async function signin(
+  _prevState: SigninState,
+  formData: FormData
+): Promise<SigninState> {
     const supabase = await createClient();
 
     // type-casting here for convenience
@@ -21,7 +29,16 @@ export async function signin(formData: FormData) {
     const { error } = await supabase.auth.signInWithPassword(data);
 
     if (error) {
-        redirect("/error");
+
+      if (error.status === 400) {
+        return {
+          success: false,
+          message: error.message,
+          errorId: (_prevState.errorId ?? 0) + 1,
+        };
+      }
+
+        redirect(`/error?status=${error.status ?? 500}&message=${encodeURIComponent(error.message)}`);
     }
 
     revalidatePath("/", "layout");
@@ -52,18 +69,22 @@ export async function signup_student(formData: FormData) {
 
   const result = signupStudentSchema.safeParse(rawData);
 
-  console.log(result);
-
-  if (!result.success) {
+  if (!result.success){
     console.log(result.error);
-    redirect("/error");
+
+    redirect(
+      `/error?status=400&message=${encodeURIComponent("Invalid signup information.")}`
+    );
   }
 
   const { error } = await supabase.auth.signUp(result.data);
 
   if (error) {
     console.log(error);
-    redirect("/error");
+
+    redirect(
+      `/error?status=${error.status ?? 500}&message=${encodeURIComponent(error.message)}`
+    );
   }
 
   revalidatePath("/", "layout");
@@ -97,14 +118,19 @@ export async function signup_faculty(formData: FormData) {
 
   if (!result.success) {
     console.log(result.error);
-    redirect("/error");
+    redirect(
+      `/error?status=400&message=${encodeURIComponent("Invalid signup information.")}`
+    );
   }
 
   const { error } = await supabase.auth.signUp(result.data);
 
   if (error) {
     console.log(error);
-    redirect("/error");
+
+    redirect(
+      `/error?status=${error.status ?? 500}&message=${encodeURIComponent(error.message)}`
+    );
   }
 
   revalidatePath("/", "layout");
@@ -117,19 +143,18 @@ export async function signup_org(formData: FormData) {
   const supabase = await createClient();
 
   const rawData = {
-      email: formData.get("email"),
-      password: formData.get("password"),
-      options: {
-        data: {
-          account_type: AccountType.Organization,
-          name: formData.get("name"),
-          short_name: formData.get("short_name"),
-          organization_type: formData.get("organization_type"),
-        }
+    email: formData.get("email"),
+    password: formData.get("password"),
+    options: {
+      data: {
+        account_type: AccountType.Organization,
+        name: formData.get("name"),
+        short_name: formData.get("short_name"),
+        organization_type: formData.get("organization_type"),
       }
     }
-
-    console.log(rawData);
+  }
+  console.log(rawData);
 
   const result = signupOrgSchema.safeParse(rawData);
 
@@ -137,14 +162,19 @@ export async function signup_org(formData: FormData) {
 
   if (!result.success) {
     console.log(result.error);
-    redirect("/error");
+    redirect(
+      `/error?status=400&message=${encodeURIComponent("Invalid signup information.")}`
+    );
   }
 
   const { error } = await supabase.auth.signUp(result.data);
 
   if (error) {
     console.log(error);
-    redirect("/error");
+
+    redirect(
+      `/error?status=${error.status ?? 500}&message=${encodeURIComponent(error.message)}`
+    );
   }
 
   revalidatePath("/", "layout");
@@ -157,7 +187,7 @@ export async function signout() {
     const { error } = await supabase.auth.signOut();
     if (error) {
         console.log(error);
-        redirect("/error");
+        redirect("/error?status=500&message=" + encodeURIComponent(error.message));
     }
 
     redirect("/signout");
