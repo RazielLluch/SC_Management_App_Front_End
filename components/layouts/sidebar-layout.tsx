@@ -3,6 +3,7 @@ import {
   SidebarInset,
   SidebarProvider,
 } from "@/components/ui/sidebar";
+import {SiteHeader} from "@/components/site-header";
 
 export function SidebarLayout({
                                 children,
@@ -12,8 +13,8 @@ export function SidebarLayout({
   return (
     <SidebarProvider>
       <AppSidebar />
-
       <SidebarInset>
+        <SiteHeader />
         {children}
       </SidebarInset>
     </SidebarProvider>
