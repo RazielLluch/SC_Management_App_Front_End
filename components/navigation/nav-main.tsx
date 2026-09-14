@@ -8,7 +8,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { CirclePlusIcon, MailIcon } from "lucide-react"
+import {CirclePlusIcon, LucideIcon, MailIcon} from "lucide-react"
 
 export function NavMain({
   items,
@@ -16,7 +16,7 @@ export function NavMain({
   items: {
     title: string
     url: string
-    icon?: React.ReactNode
+    icon?: LucideIcon
   }[]
 }) {
   return (
@@ -47,7 +47,7 @@ export function NavMain({
           {items.map((item) => (
             <SidebarMenuItem key={item.title}>
               <SidebarMenuButton tooltip={item.title}>
-                {item.icon}
+                {item.icon && <item.icon />}
                 <span>{item.title}</span>
               </SidebarMenuButton>
             </SidebarMenuItem>
