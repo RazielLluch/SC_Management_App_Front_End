@@ -16,7 +16,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
-import { MoreHorizontalIcon, FolderIcon, ShareIcon, Trash2Icon } from "lucide-react"
+import {MoreHorizontalIcon, FolderIcon, ShareIcon, Trash2Icon, LucideIcon} from "lucide-react"
 
 export function NavDocuments({
   items,
@@ -24,7 +24,7 @@ export function NavDocuments({
   items: {
     name: string
     url: string
-    icon: React.ReactNode
+    icon: LucideIcon
   }[]
 }) {
   const { isMobile } = useSidebar()
@@ -35,7 +35,7 @@ export function NavDocuments({
         {items.map((item) => (
           <SidebarMenuItem key={item.name}>
             <SidebarMenuButton render={<a href={item.url} />}>
-              {item.icon}
+              {item.icon && <item.icon />}
               <span>{item.name}</span>
             </SidebarMenuButton>
             <DropdownMenu>
