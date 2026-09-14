@@ -13,7 +13,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { CommandIcon } from "lucide-react"
+import {School2Icon} from "lucide-react"
 import SigninSignoutButton from "@/components/signin-signout-button";
 import {documents, navClouds, navMain, navSecondary} from "@/components/navigation/navigation";
 
@@ -38,8 +38,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               className="data-[slot=sidebar-menu-button]:p-1.5!"
               render={<a href="#" />}
             >
-              <CommandIcon className="size-5!" />
-              <span className="text-base font-semibold">Acme Inc.</span>
+              <School2Icon className="size-5!" />
+              <span className="text-base font-semibold">MSU-IIT OMS</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>

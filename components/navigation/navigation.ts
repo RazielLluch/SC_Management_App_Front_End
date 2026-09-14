@@ -1,39 +1,53 @@
 import {
+  CalendarDaysIcon,
   CameraIcon,
-  ChartBarIcon, CircleHelpIcon, DatabaseIcon, FileChartColumnIcon, FileIcon, FileTextIcon,
-  FolderIcon,
-  LayoutDashboardIcon,
-  ListIcon, SearchIcon, Settings2Icon, UsersIcon
+  ChartBarIcon, CircleHelpIcon, FileIcon, FileScanIcon,
+  FileSpreadsheetIcon, FileTextIcon,
+  LandmarkIcon, LayoutDashboardIcon, PresentationIcon, SearchIcon, Settings2Icon, ShoppingCartIcon, TablePropertiesIcon
 } from "lucide-react";
-import * as React from "react";
 
 export const navMain = [
-    {
-      title: "Dashboard",
-      url: "#",
-      icon: LayoutDashboardIcon,
-    },
-    {
-      title: "Lifecycle",
-      url: "#",
-      icon: ListIcon,
-    },
-    {
-      title: "Analytics",
-      url: "#",
-      icon: ChartBarIcon,
-    },
-    {
-      title: "Projects",
-      url: "#",
-      icon: FolderIcon,
-    },
-    {
-      title: "Team",
-      url: "#",
-      icon: UsersIcon,
-    },
-  ]
+  {
+    title: "Dashboard",
+    url: "#",
+    icon: LayoutDashboardIcon,
+  },
+  {
+    title: "Meetings",
+    url: "#",
+    icon: PresentationIcon,
+  },
+  {
+    title: "Analytics",
+    url: "#",
+    icon: ChartBarIcon,
+  },
+  {
+    title: "Budgeting",
+    url: "#",
+    icon: LandmarkIcon,
+  },
+  {
+    title: "Events",
+    url: "#",
+    icon: CalendarDaysIcon,
+  },
+  {
+    title: "Attendance",
+    url: "#",
+    icon: FileScanIcon,
+  },
+  {
+    title: "Assets",
+    url: "#",
+    icon: TablePropertiesIcon,
+  },
+  {
+    title: "Store",
+    url: "#",
+    icon: ShoppingCartIcon,
+  },
+]
 
 export const navClouds = [
   {
@@ -104,14 +118,14 @@ export const navSecondary = [
 
 export const documents = [
   {
-    name: "Data Library",
+    name: "Student Import Template",
     url: "#",
-    icon: DatabaseIcon,
+    icon: FileSpreadsheetIcon,
   },
   {
-    name: "Reports",
+    name: "Header-Footer Template",
     url: "#",
-    icon: FileChartColumnIcon,
+    icon: FileTextIcon,
   },
   {
     name: "Word Assistant",
