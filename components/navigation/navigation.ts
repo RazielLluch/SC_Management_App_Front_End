@@ -1,12 +1,13 @@
 import {
-  ChartBarIcon, DatabaseIcon, FileChartColumnIcon, FileIcon,
+  CameraIcon,
+  ChartBarIcon, CircleHelpIcon, DatabaseIcon, FileChartColumnIcon, FileIcon, FileTextIcon,
   FolderIcon,
   LayoutDashboardIcon,
-  ListIcon, UsersIcon
+  ListIcon, SearchIcon, Settings2Icon, UsersIcon
 } from "lucide-react";
 import * as React from "react";
 
-export const navigationMain = [
+export const navMain = [
     {
       title: "Dashboard",
       url: "#",
@@ -33,6 +34,73 @@ export const navigationMain = [
       icon: UsersIcon,
     },
   ]
+
+export const navClouds = [
+  {
+    title: "Capture",
+    icon: CameraIcon,
+    isActive: true,
+    url: "#",
+    items: [
+      {
+        title: "Active Proposals",
+        url: "#",
+      },
+      {
+        title: "Archived",
+        url: "#",
+      },
+    ],
+  },
+  {
+    title: "Proposal",
+    icon: FileTextIcon,
+    url: "#",
+    items: [
+      {
+        title: "Active Proposals",
+        url: "#",
+      },
+      {
+        title: "Archived",
+        url: "#",
+      },
+    ],
+  },
+  {
+    title: "Prompts",
+    icon: FileTextIcon,
+    url: "#",
+    items: [
+      {
+        title: "Active Proposals",
+        url: "#",
+      },
+      {
+        title: "Archived",
+        url: "#",
+      },
+    ],
+  },
+]
+
+export const navSecondary = [
+  {
+    title: "Settings",
+    url: "#",
+    icon: Settings2Icon,
+  },
+  {
+    title: "Get Help",
+    url: "#",
+    icon: CircleHelpIcon,
+  },
+  {
+    title: "Search",
+    url: "#",
+    icon: SearchIcon,
+  },
+]
 
 export const documents = [
   {
