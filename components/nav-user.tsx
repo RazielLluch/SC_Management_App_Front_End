@@ -27,7 +27,7 @@ export function NavUser({
     user,
     logout
 }: {
-    user: User & { name: string, avatar: string },
+    user: User & { name?: string, avatar?: string },
     logout: () => void
 }) {
   const { isMobile } = useSidebar()
