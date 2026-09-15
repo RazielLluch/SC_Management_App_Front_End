@@ -34,12 +34,13 @@ const navLinks = [
   { label: "Organizations", href: "/organizations" },
 ];
 
-interface NavUserProps {
-  user: User & { name?: string, avatar?: string };
-  logout: () => void;
-}
-
-function NavUser({ user, logout }: NavUserProps) {
+function NavUser({
+                   user,
+                   logout
+                 }: {
+  user: User & { name?: string, avatar?: string },
+  logout: () => void
+}) {
   const name = user.user_metadata?.full_name ?? user.email ?? "Account";
   const initials = name.slice(0, 2).toUpperCase();
 
@@ -154,7 +155,7 @@ function SigninButton() {
 export function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b bg-background">
-      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4">
+      <div className="mx-auto flex h-14 max-w-8xl items-center justify-between px-4">
         <Link href="/dashboard" className="flex items-center gap-2 font-semibold">
           <School2Icon className="size-6!" />
           SCMS
