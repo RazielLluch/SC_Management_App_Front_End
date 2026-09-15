@@ -23,7 +23,7 @@ const SigninButton = () => {
         return (
             <NavUser
                 user={user}
-                logout={() => {
+                logout={async () => {
                     signout();
                     setUser(null);
                 }}
@@ -33,7 +33,7 @@ const SigninButton = () => {
     return (
         <Button
             variant="outline"
-            onClick={() => {
+            onClick={async () => {
                 router.push("/signin");
             }}
         >
