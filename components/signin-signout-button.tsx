@@ -7,39 +7,39 @@ import { signout } from "@/lib/auth-actions";
 import {NavUser} from "@/components/nav-user";
 
 const SigninButton = () => {
-    const [user, setUser] = useState<any>(null);
-    const router = useRouter();
-    const supabase = createClient();
-    useEffect(() => {
-        const fetchUser = async () => {
-            const {
-                data: { user },
-            } = await supabase.auth.getUser();
-            setUser(user);
-        };
-        fetchUser();
-    }, []);
-    if (user) {
-        return (
-            <NavUser
-                user={user}
-                logout={() => {
-                    signout();
-                    setUser(null);
-                }}
-            />
-        );
-    }
+  const [user, setUser] = useState<any>(null);
+  const router = useRouter();
+  const supabase = createClient();
+  useEffect(() => {
+    const fetchUser = async () => {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+      setUser(user);
+    };
+    fetchUser();
+  }, []);
+  if (user) {
     return (
-        <Button
-            variant="outline"
-            onClick={() => {
-                router.push("/signin");
-            }}
-        >
-            Login
-        </Button>
+      <NavUser
+        user={user}
+        logout={async () => {
+          signout();
+          setUser(null);
+        }}
+      />
     );
+  }
+  return (
+    <Button
+      variant="outline"
+      onClick={async () => {
+        router.push("/signin");
+      }}
+    >
+      Login
+    </Button>
+  );
 };
 
 export default SigninButton;

@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/sidebar"
 import {School2Icon} from "lucide-react"
 import SigninSignoutButton from "@/components/signin-signout-button";
-import {documents, navClouds, navMain, navSecondary} from "@/components/navigation/navigation";
+import {documents, navClouds, navMain, navSecondary} from "@/components/navigation/sidebar/navigation";
 
 const data = {
   user: {

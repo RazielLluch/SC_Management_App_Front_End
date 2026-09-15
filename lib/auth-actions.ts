@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 
 import { createClient } from "@/utils/supabase/server";
 import {signupFacultySchema, signupOrgSchema, signupStudentSchema} from "@/lib/validations/auth";
-import {AccountType} from "@/lib/enums";
+import {AccountType} from "@/types/enums";
 
 export type SigninState = {
   success: boolean;

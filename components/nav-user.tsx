@@ -20,17 +20,14 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
+import type { User } from "@supabase/supabase-js";
 import { EllipsisVerticalIcon, CircleUserRoundIcon, CreditCardIcon, BellIcon, LogOutIcon } from "lucide-react"
 
 export function NavUser({
     user,
     logout
 }: {
-    user: {
-    name: string
-    email: string
-    avatar: string
-    },
+    user: User & { name?: string, avatar?: string },
     logout: () => void
 }) {
   const { isMobile } = useSidebar()
