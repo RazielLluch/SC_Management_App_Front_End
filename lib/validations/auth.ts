@@ -1,5 +1,5 @@
 import { z } from "zod";
-import {AccountType, OrganizationTypeSchema} from "@/lib/enums";
+import {AccountType, OrganizationTypeSchema} from "@/types/enums";
 
 export const signupStudentSchema = z.object({
   email: z.email(),
