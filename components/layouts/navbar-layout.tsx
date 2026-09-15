@@ -158,7 +158,7 @@ export function Navbar() {
       <div className="mx-auto flex h-14 max-w-8xl items-center justify-between px-4">
         <Link href="/dashboard" className="flex items-center gap-2 font-semibold">
           <School2Icon className="size-6!" />
-          SCMS
+          MSU-IIT OMS
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex">
