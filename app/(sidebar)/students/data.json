@@ -1,0 +1,410 @@
+[
+  {
+    "id": 1,
+    "student_number": "2022-0801",
+    "full_name": "Adrian Miguel Santos",
+    "email": "adrian.santos@g.msuiit.edu.ph",
+    "program": "BSCS",
+    "year_level": 4
+  },
+  {
+    "id": 2,
+    "student_number": "2022-0802",
+    "full_name": "Bianca Louise Reyes",
+    "email": "bianca.reyes@g.msuiit.edu.ph",
+    "program": "BSIT",
+    "year_level": 4
+  },
+  {
+    "id": 3,
+    "student_number": "2022-0803",
+    "full_name": "Carlos Emmanuel Cruz",
+    "email": "carlos.cruz@g.msuiit.edu.ph",
+    "program": "BSCS",
+    "year_level": 4
+  },
+  {
+    "id": 4,
+    "student_number": "2022-0804",
+    "full_name": "Danica Mae Villanueva",
+    "email": "danica.villanueva@g.msuiit.edu.ph",
+    "program": "BSIT",
+    "year_level": 4
+  },
+  {
+    "id": 5,
+    "student_number": "2022-0805",
+    "full_name": "Ethan Gabriel Navarro",
+    "email": "ethan.navarro@g.msuiit.edu.ph",
+    "program": "BSCS",
+    "year_level": 4
+  },
+  {
+    "id": 6,
+    "student_number": "2022-0806",
+    "full_name": "Francesca Anne Lim",
+    "email": "francesca.lim@g.msuiit.edu.ph",
+    "program": "BSIT",
+    "year_level": 4
+  },
+  {
+    "id": 7,
+    "student_number": "2022-0807",
+    "full_name": "Gabriel Thomas Flores",
+    "email": "gabriel.flores@g.msuiit.edu.ph",
+    "program": "BSCS",
+    "year_level": 4
+  },
+  {
+    "id": 8,
+    "student_number": "2022-0808",
+    "full_name": "Hannah Nicole Garcia",
+    "email": "hannah.garcia@g.msuiit.edu.ph",
+    "program": "BSIT",
+    "year_level": 4
+  },
+  {
+    "id": 9,
+    "student_number": "2022-0809",
+    "full_name": "Ivan Matthew Dela Cruz",
+    "email": "ivan.delacruz@g.msuiit.edu.ph",
+    "program": "BSCS",
+    "year_level": 4
+  },
+  {
+    "id": 10,
+    "student_number": "2022-0810",
+    "full_name": "Jasmine Claire Mendoza",
+    "email": "jasmine.mendoza@g.msuiit.edu.ph",
+    "program": "BSIT",
+    "year_level": 4
+  },
+  {
+    "id": 11,
+    "student_number": "2023-0811",
+    "full_name": "Kevin Joshua Ramos",
+    "email": "kevin.ramos@g.msuiit.edu.ph",
+    "program": "BSCS",
+    "year_level": 3
+  },
+  {
+    "id": 12,
+    "student_number": "2023-0812",
+    "full_name": "Lara Sophia Aquino",
+    "email": "lara.aquino@g.msuiit.edu.ph",
+    "program": "BSIT",
+    "year_level": 3
+  },
+  {
+    "id": 13,
+    "student_number": "2023-0813",
+    "full_name": "Marcus Adrian Bautista",
+    "email": "marcus.bautista@g.msuiit.edu.ph",
+    "program": "BSCS",
+    "year_level": 3
+  },
+  {
+    "id": 14,
+    "student_number": "2023-0814",
+    "full_name": "Nina Patricia Castillo",
+    "email": "nina.castillo@g.msuiit.edu.ph",
+    "program": "BSIT",
+    "year_level": 3
+  },
+  {
+    "id": 15,
+    "student_number": "2023-0815",
+    "full_name": "Oliver James Fernandez",
+    "email": "oliver.fernandez@g.msuiit.edu.ph",
+    "program": "BSCS",
+    "year_level": 3
+  },
+  {
+    "id": 16,
+    "student_number": "2023-0816",
+    "full_name": "Paolo Vincent Gonzales",
+    "email": "paolo.gonzales@g.msuiit.edu.ph",
+    "program": "BSIT",
+    "year_level": 3
+  },
+  {
+    "id": 17,
+    "student_number": "2023-0817",
+    "full_name": "Quinn Isabelle Herrera",
+    "email": "quinn.herrera@g.msuiit.edu.ph",
+    "program": "BSCS",
+    "year_level": 3
+  },
+  {
+    "id": 18,
+    "student_number": "2023-0818",
+    "full_name": "Rafael Dominic Ignacio",
+    "email": "rafael.ignacio@g.msuiit.edu.ph",
+    "program": "BSIT",
+    "year_level": 3
+  },
+  {
+    "id": 19,
+    "student_number": "2023-0819",
+    "full_name": "Samantha Elise Jimenez",
+    "email": "samantha.jimenez@g.msuiit.edu.ph",
+    "program": "BSCS",
+    "year_level": 3
+  },
+  {
+    "id": 20,
+    "student_number": "2023-0820",
+    "full_name": "Tristan Miguel Katigbak",
+    "email": "tristan.katigbak@g.msuiit.edu.ph",
+    "program": "BSIT",
+    "year_level": 3
+  },
+  {
+    "id": 21,
+    "student_number": "2024-0821",
+    "full_name": "Angela Marie Lopez",
+    "email": "angela.lopez@g.msuiit.edu.ph",
+    "program": "BSCS",
+    "year_level": 2
+  },
+  {
+    "id": 22,
+    "student_number": "2024-0822",
+    "full_name": "Benjamin Carlo Mercado",
+    "email": "benjamin.mercado@g.msuiit.edu.ph",
+    "program": "BSIT",
+    "year_level": 2
+  },
+  {
+    "id": 23,
+    "student_number": "2024-0823",
+    "full_name": "Clarissa Joy Natividad",
+    "email": "clarissa.natividad@g.msuiit.edu.ph",
+    "program": "BSCS",
+    "year_level": 2
+  },
+  {
+    "id": 24,
+    "student_number": "2024-0824",
+    "full_name": "Diego Rafael Ocampo",
+    "email": "diego.ocampo@g.msuiit.edu.ph",
+    "program": "BSIT",
+    "year_level": 2
+  },
+  {
+    "id": 25,
+    "student_number": "2024-0825",
+    "full_name": "Elijah Sean Perez",
+    "email": "elijah.perez@g.msuiit.edu.ph",
+    "program": "BSCS",
+    "year_level": 2
+  },
+  {
+    "id": 26,
+    "student_number": "2024-0826",
+    "full_name": "Faith Alexandra Quinto",
+    "email": "faith.quinto@g.msuiit.edu.ph",
+    "program": "BSIT",
+    "year_level": 2
+  },
+  {
+    "id": 27,
+    "student_number": "2024-0827",
+    "full_name": "Gavin Lucas Rivera",
+    "email": "gavin.rivera@g.msuiit.edu.ph",
+    "program": "BSCS",
+    "year_level": 2
+  },
+  {
+    "id": 28,
+    "student_number": "2024-0828",
+    "full_name": "Isabel Therese Salazar",
+    "email": "isabel.salazar@g.msuiit.edu.ph",
+    "program": "BSIT",
+    "year_level": 2
+  },
+  {
+    "id": 29,
+    "student_number": "2024-0829",
+    "full_name": "Jacob Nathan Tan",
+    "email": "jacob.tan@g.msuiit.edu.ph",
+    "program": "BSCS",
+    "year_level": 2
+  },
+  {
+    "id": 30,
+    "student_number": "2024-0830",
+    "full_name": "Katrina Mae Uy",
+    "email": "katrina.uy@g.msuiit.edu.ph",
+    "program": "BSIT",
+    "year_level": 2
+  },
+  {
+    "id": 31,
+    "student_number": "2025-0831",
+    "full_name": "Aaron Joseph Valdez",
+    "email": "aaron.valdez@g.msuiit.edu.ph",
+    "program": "BSCS",
+    "year_level": 1
+  },
+  {
+    "id": 32,
+    "student_number": "2025-0832",
+    "full_name": "Beatrice Anne Wong",
+    "email": "beatrice.wong@g.msuiit.edu.ph",
+    "program": "BSIT",
+    "year_level": 1
+  },
+  {
+    "id": 33,
+    "student_number": "2025-0833",
+    "full_name": "Christian Mark Yabut",
+    "email": "christian.yabut@g.msuiit.edu.ph",
+    "program": "BSCS",
+    "year_level": 1
+  },
+  {
+    "id": 51,
+    "student_number": "2022-0834",
+    "full_name": "Josiah Raziel S. Lluch",
+    "email": "josiahraziel.lluch@g.msuiit.edu.ph",
+    "program": "BSCS",
+    "year_level": 4
+  },
+  {
+    "id": 34,
+    "student_number": "2025-0851",
+    "full_name": "Diana Rose Zamora",
+    "email": "diana.zamora@g.msuiit.edu.ph",
+    "program": "BSIT",
+    "year_level": 1
+  },
+  {
+    "id": 35,
+    "student_number": "2025-0835",
+    "full_name": "Enzo Gabriel Abad",
+    "email": "enzo.abad@g.msuiit.edu.ph",
+    "program": "BSCS",
+    "year_level": 1
+  },
+  {
+    "id": 36,
+    "student_number": "2025-0836",
+    "full_name": "Fiona Grace Bernardo",
+    "email": "fiona.bernardo@g.msuiit.edu.ph",
+    "program": "BSIT",
+    "year_level": 1
+  },
+  {
+    "id": 37,
+    "student_number": "2025-0837",
+    "full_name": "George Nathaniel Chua",
+    "email": "george.chua@g.msuiit.edu.ph",
+    "program": "BSCS",
+    "year_level": 1
+  },
+  {
+    "id": 38,
+    "student_number": "2025-0838",
+    "full_name": "Hazel Mae Domingo",
+    "email": "hazel.domingo@g.msuiit.edu.ph",
+    "program": "BSIT",
+    "year_level": 1
+  },
+  {
+    "id": 39,
+    "student_number": "2025-0839",
+    "full_name": "Ian Christopher Evangelista",
+    "email": "ian.evangelista@g.msuiit.edu.ph",
+    "program": "BSCS",
+    "year_level": 1
+  },
+  {
+    "id": 40,
+    "student_number": "2025-0840",
+    "full_name": "Julia Nicole Francisco",
+    "email": "julia.francisco@g.msuiit.edu.ph",
+    "program": "BSIT",
+    "year_level": 1
+  },
+  {
+    "id": 41,
+    "student_number": "2022-0841",
+    "full_name": "Kenneth Louis Garcia",
+    "email": "kenneth.garcia@g.msuiit.edu.ph",
+    "program": "BSCS",
+    "year_level": 4
+  },
+  {
+    "id": 42,
+    "student_number": "2022-0842",
+    "full_name": "Leah Camille Hernandez",
+    "email": "leah.hernandez@g.msuiit.edu.ph",
+    "program": "BSIT",
+    "year_level": 4
+  },
+  {
+    "id": 43,
+    "student_number": "2023-0843",
+    "full_name": "Miguel Antonio Isidro",
+    "email": "miguel.isidro@g.msuiit.edu.ph",
+    "program": "BSCS",
+    "year_level": 3
+  },
+  {
+    "id": 44,
+    "student_number": "2023-0844",
+    "full_name": "Nicole Andrea Javier",
+    "email": "nicole.javier@g.msuiit.edu.ph",
+    "program": "BSIT",
+    "year_level": 3
+  },
+  {
+    "id": 45,
+    "student_number": "2024-0845",
+    "full_name": "Oscar Daniel Lim",
+    "email": "oscar.lim@g.msuiit.edu.ph",
+    "program": "BSCS",
+    "year_level": 2
+  },
+  {
+    "id": 46,
+    "student_number": "2024-0846",
+    "full_name": "Patricia Elaine Manalo",
+    "email": "patricia.manalo@g.msuiit.edu.ph",
+    "program": "BSIT",
+    "year_level": 2
+  },
+  {
+    "id": 47,
+    "student_number": "2025-0847",
+    "full_name": "Ramon Luis Navarro",
+    "email": "ramon.navarro@g.msuiit.edu.ph",
+    "program": "BSCS",
+    "year_level": 1
+  },
+  {
+    "id": 48,
+    "student_number": "2025-0848",
+    "full_name": "Sofia Isabelle Ortega",
+    "email": "sofia.ortega@g.msuiit.edu.ph",
+    "program": "BSIT",
+    "year_level": 1
+  },
+  {
+    "id": 49,
+    "student_number": "2023-0849",
+    "full_name": "Thomas Elijah Pascual",
+    "email": "thomas.pascual@g.msuiit.edu.ph",
+    "program": "BSCS",
+    "year_level": 3
+  },
+  {
+    "id": 50,
+    "student_number": "2024-0850",
+    "full_name": "Victoria Anne Quezon",
+    "email": "victoria.quezon@g.msuiit.edu.ph",
+    "program": "BSIT",
+    "year_level": 2
+  }
+]
