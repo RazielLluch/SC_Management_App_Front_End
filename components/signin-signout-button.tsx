@@ -23,7 +23,7 @@ const SigninButton = () => {
     return (
       <NavUser
         user={user}
-        logout={async () => {
+        logoutAction={async () => {
           signout();
           setUser(null);
         }}
