@@ -1,4 +1,4 @@
-import {SectionCards} from "@/components/section-cards";
+import {SectionCards} from "@/app/(sidebar)/dashboard/components/section-cards";
 import {ChartAreaInteractive} from "@/components/chart-area-interactive";
 import {DataTable} from "@/components/data-table";
 import data from "@/app/data.json";
