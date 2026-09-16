@@ -25,10 +25,10 @@ import { EllipsisVerticalIcon, CircleUserRoundIcon, CreditCardIcon, BellIcon, Lo
 
 export function NavUser({
     user,
-    logout
+    logoutAction
 }: {
     user: User & { name?: string, avatar?: string },
-    logout: () => void
+    logoutAction: () => void
 }) {
   const { isMobile } = useSidebar()
   return (
@@ -93,7 +93,7 @@ export function NavUser({
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onClick={logout}>
+            <DropdownMenuItem onClick={logoutAction}>
               <LogOutIcon
               />
               Log out
