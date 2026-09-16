@@ -3,13 +3,14 @@ import {
   CameraIcon,
   ChartBarIcon, CircleHelpIcon, FileIcon, FileScanIcon,
   FileSpreadsheetIcon, FileTextIcon,
-  LandmarkIcon, LayoutDashboardIcon, PresentationIcon, SearchIcon, Settings2Icon, ShoppingCartIcon, TablePropertiesIcon
+  LandmarkIcon, LayoutDashboardIcon, PresentationIcon, SearchIcon, Settings2Icon, ShoppingCartIcon, TablePropertiesIcon,
+  UsersIcon
 } from "lucide-react";
 
 export const navMain = [
   {
     title: "Dashboard",
-    url: "#",
+    url: "/dashboard",
     icon: LayoutDashboardIcon,
   },
   {
@@ -21,6 +22,11 @@ export const navMain = [
     title: "Analytics",
     url: "#",
     icon: ChartBarIcon,
+  },
+  {
+    title: "Students",
+    url: "/students",
+    icon: UsersIcon
   },
   {
     title: "Budgeting",
