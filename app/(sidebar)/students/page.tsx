@@ -1,11 +1,11 @@
 import {Card, CardAction, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
 import {Badge} from "@/components/ui/badge";
 import {InfoIcon, TrendingDownIcon, TrendingUpIcon} from "lucide-react";
-import {ChartAreaInteractive} from "@/components/chart-area-interactive";
-import {DataTable} from "@/components/data-table";
-import data from "@/app/data.json";
+import {StudentsTable} from "@/app/(sidebar)/students/components/students-table";
+import data from "@/app/(sidebar)/students/data.json";
 import React from "react";
 import Link from "next/link";
+import {Tooltip, TooltipContent, TooltipTrigger} from "@/components/ui/tooltip";
 
 export default function Page(){
   return (
@@ -14,10 +14,7 @@ export default function Page(){
         <div className="@container/main flex flex-1 flex-col gap-2">
           <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
             <SectionCards />
-            <div className="px-4 lg:px-6">
-              <ChartAreaInteractive />
-            </div>
-            <DataTable data={data} />
+            <StudentsTable data={data} />
           </div>
         </div>
       </div>
@@ -25,7 +22,7 @@ export default function Page(){
   )
 }
 
-function SectionCards() {
+export function SectionCards() {
   return (
     <div className="grid grid-cols-1 gap-4 px-4 *:data-[slot=card]:bg-linear-to-t *:data-[slot=card]:from-primary/5 *:data-[slot=card]:to-card *:data-[slot=card]:shadow-xs lg:px-6 @xl/main:grid-cols-2 @5xl/main:grid-cols-4 dark:*:data-[slot=card]:bg-card">
       <Card className="@container/card">
@@ -35,9 +32,16 @@ function SectionCards() {
             1,011
           </CardTitle>
           <CardAction>
-            <Link href="/test">
-              <InfoIcon className="size-4" />
-            </Link>
+            <Tooltip key="info-tooltip">
+              <TooltipTrigger render={
+                <Link href="/test">
+                <InfoIcon className="size-4" />
+                </Link>
+              } />
+              <TooltipContent>
+                <p>Add to library</p>
+              </TooltipContent>
+            </Tooltip>
           </CardAction>
         </CardHeader>
         <CardFooter className="flex-col items-start gap-1.5 text-sm">
