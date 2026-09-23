@@ -94,16 +94,16 @@ import {
 import { GripVerticalIcon, EllipsisVerticalIcon, Columns3Icon, ChevronDownIcon, PlusIcon, ChevronsLeftIcon, ChevronLeftIcon, ChevronRightIcon, ChevronsRightIcon, TrendingUpIcon } from "lucide-react"
 
 export const schema = z.object({
-  id: z.number(),
-  student_number: z.string(),
-  full_name: z.string(),
+  studentId: z.string().uuid(),
+  studentNumber: z.string(),
+  fullName: z.string(),
   email: z.string(),
   program: z.string(),
-  year_level: z.number()
+  yearLevel: z.number()
 })
 
 // Create a separate component for the drag handle
-export function DragHandle({ id }: { id: number }) {
+export function DragHandle({ id }: { id: string }) {
   const { attributes, listeners } = useSortable({
     id,
   })
@@ -124,7 +124,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
   {
     id: "drag",
     header: () => null,
-    cell: ({ row }) => <DragHandle id={row.original.id} />,
+    cell: ({ row }) => <DragHandle id={row.original.studentId} />,
   },
   {
     id: "select",
@@ -154,7 +154,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: "student_number",
+    accessorKey: "studentNumber",
     header: "Student Number",
     cell: ({ row }) => {
       return <TableCellViewer item={row.original} />
@@ -162,11 +162,11 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
     enableHiding: false,
   },
   {
-    accessorKey: "full_name",
+    accessorKey: "fullName",
     header: "Full Name",
     cell: ({ row }) => (
       <div className="w-32">
-        {row.original.full_name}
+        {row.original.fullName}
       </div>
     ),
   },
@@ -180,11 +180,11 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
     ),
   },
   {
-    accessorKey: "year_level",
+    accessorKey: "yearLevel",
     header: "Year Level",
     cell: ({ row }) => (
       <div className="flex justify-center w-10">
-        {row.original.year_level}
+        {row.original.yearLevel}
       </div>
     ),
   },
@@ -220,7 +220,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
 
 export function DraggableRow({ row }: { row: Row<z.infer<typeof schema>> }) {
   const { transform, transition, setNodeRef, isDragging } = useSortable({
-    id: row.original.id,
+    id: row.original.studentId,
   })
   return (
     <TableRow
@@ -265,7 +265,7 @@ export function StudentsTable({
     useSensor(KeyboardSensor, {})
   )
   const dataIds = React.useMemo<UniqueIdentifier[]>(
-    () => data?.map(({ id }) => id) || [],
+    () => data?.map(({ studentId }) => studentId) || [],
     [data]
   )
   const table = useReactTable({
@@ -278,7 +278,7 @@ export function StudentsTable({
       columnFilters,
       pagination,
     },
-    getRowId: (row) => row.id.toString(),
+    getRowId: (row) => row.studentId.toString(),
     enableRowSelection: true,
     onRowSelectionChange: setRowSelection,
     onSortingChange: setSorting,
@@ -601,11 +601,11 @@ export function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
           />
         }
       >
-        {item.student_number}
+        {item.studentNumber}
       </DrawerTrigger>
       <DrawerContent>
         <DrawerHeader className="gap-1">
-          <DrawerTitle>{item.student_number}</DrawerTitle>
+          <DrawerTitle>{item.studentNumber}</DrawerTitle>
           <DrawerDescription>
             Showing total visitors for the last 6 months
           </DrawerDescription>
@@ -672,13 +672,13 @@ export function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
             <div className="grid grid-cols-2 gap-4">
               <div className="flex flex-col gap-3">
                 <Label htmlFor="header">Student Number</Label>
-                <Input id="header" defaultValue={item.student_number} />
+                <Input id="header" defaultValue={item.studentNumber} />
               </div>
               <div className="flex flex-col gap-3">
-                <Label htmlFor="year_level">Year Level</Label>
+                <Label htmlFor="yearLevel">Year Level</Label>
                 <Select
-                  id="year_level"
-                  defaultValue={item.year_level}
+                  id="yearLevel"
+                  defaultValue={item.yearLevel}
                   items={[
                     { label: "1", value: 1 },
                     { label: "2", value: 2 },
@@ -687,7 +687,7 @@ export function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
                     { label: "5+", value: 5 },
                   ]}
                 >
-                  <SelectTrigger id="year_level" className="w-full">
+                  <SelectTrigger id="yearLevel" className="w-full">
                     <SelectValue placeholder="Select a year level" />
                   </SelectTrigger>
                   <SelectContent>
@@ -703,8 +703,8 @@ export function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
               </div>
             </div>
             <div className="flex flex-col gap-3">
-              <Label htmlFor="full_name">Full Name</Label>
-              <Input id="full_name" defaultValue={item.full_name} />
+              <Label htmlFor="fullName">Full Name</Label>
+              <Input id="fullName" defaultValue={item.fullName} />
             </div>
             <div className="flex flex-col gap-3">
               <Label htmlFor="email">Type</Label>

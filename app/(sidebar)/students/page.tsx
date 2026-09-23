@@ -1,20 +1,35 @@
+"use server"
+
 import {Card, CardAction, CardDescription, CardFooter, CardHeader, CardTitle} from "@/components/ui/card";
 import {Badge} from "@/components/ui/badge";
 import {InfoIcon, TrendingDownIcon, TrendingUpIcon} from "lucide-react";
 import {StudentsTable} from "@/app/(sidebar)/students/components/students-table";
-import data from "@/app/(sidebar)/students/data.json";
 import React from "react";
 import Link from "next/link";
 import {Tooltip, TooltipContent, TooltipTrigger} from "@/components/ui/tooltip";
+import {createClient} from "@/utils/supabase/server";
+import {apiFetch} from "@/utils/api/fetch";
 
-export default function Page(){
+export default async function Page(){
+
+  const supabase = await createClient();
+
+  const res = await apiFetch(supabase, "/students", { cache: "no-store" });
+
+  if (!res.ok) {
+    // map Flask's 401 to a redirect if that's your convention
+    throw new Error(`Failed to load students: ${res.status}`);
+  }
+
+  const json = await res.json();
+
   return (
     <div>
       <div className="flex flex-1 flex-col">
         <div className="@container/main flex flex-1 flex-col gap-2">
           <div className="flex flex-col gap-4 py-4 md:gap-6 md:py-6">
             <SectionCards />
-            <StudentsTable data={data} />
+            <StudentsTable data={json.data} />
           </div>
         </div>
       </div>
@@ -22,7 +37,7 @@ export default function Page(){
   )
 }
 
-export function SectionCards() {
+export async function SectionCards() {
   return (
     <div className="grid grid-cols-1 gap-4 px-4 *:data-[slot=card]:bg-linear-to-t *:data-[slot=card]:from-primary/5 *:data-[slot=card]:to-card *:data-[slot=card]:shadow-xs lg:px-6 @xl/main:grid-cols-2 @5xl/main:grid-cols-4 dark:*:data-[slot=card]:bg-card">
       <Card className="@container/card">
