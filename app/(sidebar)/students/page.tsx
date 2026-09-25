@@ -13,8 +13,6 @@ import {apiFetch} from "@/utils/api/fetch";
 async function getStudents() {
   const supabase = await createClient();
 
-  await new Promise((resolve) => setTimeout(resolve, 4000)); // Simulate a delay of 1 second
-
   const res = await apiFetch(supabase, "/students", { cache: "no-store" });
 
   if (!res.ok) {
