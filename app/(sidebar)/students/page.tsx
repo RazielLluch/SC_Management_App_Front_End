@@ -10,9 +10,10 @@ import {Tooltip, TooltipContent, TooltipTrigger} from "@/components/ui/tooltip";
 import {createClient} from "@/utils/supabase/server";
 import {apiFetch} from "@/utils/api/fetch";
 
-export default async function Page(){
-
+async function getStudents() {
   const supabase = await createClient();
+
+  await new Promise((resolve) => setTimeout(resolve, 4000)); // Simulate a delay of 1 second
 
   const res = await apiFetch(supabase, "/students", { cache: "no-store" });
 
@@ -21,7 +22,12 @@ export default async function Page(){
     throw new Error(`Failed to load students: ${res.status}`);
   }
 
-  const json = await res.json();
+  return await res.json();
+}
+
+export default async function Page(){
+
+  const json = await getStudents();
 
   return (
     <div>
