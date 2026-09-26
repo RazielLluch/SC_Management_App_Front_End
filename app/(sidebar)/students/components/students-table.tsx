@@ -600,6 +600,8 @@ export function TableCellViewer({ item }: { item: z.infer<typeof schema> }) {
             className="w-fit px-0 text-left text-foreground"
           />
         }
+
+        className="tabular-nums"
       >
         {item.studentNumber}
       </DrawerTrigger>
